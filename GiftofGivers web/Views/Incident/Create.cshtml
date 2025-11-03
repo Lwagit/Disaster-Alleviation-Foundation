@@ -1,0 +1,55 @@
+﻿@model List<GiftofGivers_web.Models.Incident>
+@{
+    ViewData["Title"] = "Incidents";
+}
+
+<h2>Incidents</h2>
+
+<form asp-action="Create" method="post" class="mb-4">
+    <input type="hidden" id="incidentId" name="Id" value="0" />
+    <input id="disasterType" class="form-control mb-2" placeholder="Disaster Type" name="DisasterType" />
+    <input id="location" class="form-control mb-2" placeholder="Location" name="Location" />
+    <input id="description" class="form-control mb-2" placeholder="Description" name="Description" />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Disaster Type</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.DisasterType</td>
+                <td>@item.Location</td>
+                <td>@item.Description</td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm" onclick="editIncident(@item.Id, '@item.DisasterType', '@item.Location', '@item.Description')">Edit</button>
+                    <form asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function editIncident(id, disasterType, location, description) {
+            document.getElementById('incidentId').value = id;
+            document.getElementById('disasterType').value = disasterType;
+            document.getElementById('location').value = location;
+            document.getElementById('description').value = description;
+        }
+    </script>
+}

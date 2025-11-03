@@ -1,0 +1,41 @@
+﻿@model List<GiftofGivers_web.Models.Incident>
+
+<h2>Manage Incidents</h2>
+
+<form asp-action="Index" method="post">
+    <input type="hidden" name="Id" />
+    <input name="DisasterType" placeholder="Disaster Type" />
+    <input name="Location" placeholder="Location" />
+    <input name="Description" placeholder="Description" />
+    <button type="submit">Save</button>
+</form>
+
+<table border="1" style="margin-top:20px;">
+    <tr>
+        <th>Disaster Type</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.DisasterType</td>
+            <td>@i.Location</td>
+            <td>@i.Description</td>
+            <td>
+                <form asp-action="Index" method="post" style="display:inline">
+                    <input type="hidden" name="Id" value="@i.Id" />
+                    <input name="DisasterType" value="@i.DisasterType" />
+                    <input name="Location" value="@i.Location" />
+                    <input name="Description" value="@i.Description" />
+                    <button type="submit">Edit</button>
+                </form>
+                <form asp-action="Delete" method="post" style="display:inline">
+                    <input type="hidden" name="id" value="@i.Id" />
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

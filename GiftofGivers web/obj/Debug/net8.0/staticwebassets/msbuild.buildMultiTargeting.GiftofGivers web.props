@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\GiftofGivers web.props" />
+</Project>
