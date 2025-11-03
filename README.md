@@ -10,4 +10,10 @@ CSS → for styling the pages.
 JavaScript → for any client-side interactivity (like validation, dynamic UI updates).
 
 DATABASE
-Entity Framework Core In-Memory Database
+Azure SQL Database (Data visible on Azure SQL,SQL Server Management Studio & on the application itself when ran.)
+
+Data captured:
+User data.
+Incident data.
+Donation data.
+Volunteer data.
